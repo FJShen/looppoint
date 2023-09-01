@@ -157,7 +157,7 @@ def gen_cluster(config):
   if config['cluster_dim']:
     cmd += ' -dim %(cluster_dim)s' % config
   if config['cluster_maxk']:
-    cmd += ' -coveragePct 1.0 -maxK %(cluster_maxk)s '% config
+    cmd += ' -coveragePct 0.96 -numInitSeeds 10 -maxK %(cluster_maxk)s '% config
   cmd += '"'
   ex_log(cmd, config, cwd = config['output_base_dir'])
 
@@ -517,9 +517,9 @@ def create_default_config():
   config['basedir'] = os.path.dirname(os.path.realpath(__file__))
 
   # cluster parameters
-  config['warmup_factor'] = '2'
-  config['cluster_dim']  = '50'
-  config['cluster_maxk']   = '25'
+  config['warmup_factor'] = '5'
+  config['cluster_dim']  = '16'
+  config['cluster_maxk']   = '24'
 
   # tools
   config['app_base'] = os.path.join(config['basedir'], 'apps')
