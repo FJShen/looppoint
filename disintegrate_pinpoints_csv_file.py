@@ -73,7 +73,7 @@ def _generate_region_csv_file(global_file: str, region_id: str, region_str: str)
     with open(region_filename, "w") as ofile:
         ofile.write(region_str)
 
-def run(path: Path):
+def run(path: str):
     """
     This script aims to break down a single csv file contaning all ROIs and their
     warmup regions into separate csv files, each containing one ROI (and its
@@ -89,7 +89,7 @@ def run(path: Path):
     EXCEPTION: If glob(*.Data/*.csv) returns zero or more than one file, the script
     raises an exception. 
     """
-    files = _find_eligible_global_pinpoints_csv_file(path)
+    files = _find_eligible_global_pinpoints_csv_file(Path(path))
     if len(files) != 1:
         raise Exception(f"Result of glob is not one single file. We got {files}")
     # print(files)
@@ -104,7 +104,7 @@ def run(path: Path):
         [s, single_region_s, region_id] = _extract_single_region_from_global_s(s)
 
 def main() :
-    path = Path("/home/shen449/runahead_project/looppoint/apps/demo/matrix-omp/test/custom-matrix-omp-0-test-passive-1-20230901172326")
+    path = Path("/home/shen449/runahead_project/looppoint/apps/demo/matrix-omp/test/custom-matrix-omp-0-test-passive-1-20230902014333")
     run(path)
 
 if __name__ == "__main__":
