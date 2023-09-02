@@ -663,6 +663,8 @@ Usage:
     # print help information and exit:
     print e
     usage()
+    
+  update_config['nosim'] = False
   for o, a in opts:
     if o == '-h' or o == '--help':
       usage(0)
@@ -695,8 +697,6 @@ Usage:
       native_run = True
     if o == '--nosim':
       update_config['nosim'] = True
-    else:
-      update_config['nosim'] = False
 
   if suite_apps and custom_cfg:
     print('Cannot run a default application (--program) while using --custom-cfg')
