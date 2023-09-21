@@ -16,7 +16,7 @@ export SDE_BUILD_KIT := ${PWD}/tools/sde-external-9.14.0-2022-10-25-lin
 SNIPER_GIT_REPO?=https://github.com/snipersim/snipersim.git
 
 run:
-	docker run --rm -it -v "${PWD}:${PWD}" --user $(shell id -u):$(shell id -g) -w "${PWD}" $(DOCKER_IMAGE)
+	docker run --rm -it -v "${PWD}:${PWD}" -v "/home/gem5:/home/gem5" --user $(shell id -u):$(shell id -g) -w "${PWD}" $(DOCKER_IMAGE)
 
 run-root-cwd:
 	docker run --privileged --rm -it -v "${PWD}:${PWD}" --user root -w "${PWD}" $(DOCKER_IMAGE)
