@@ -394,7 +394,7 @@ def evaluate(config):
     sum_rep_runtime += region_runtime
 
   coverage = cov_mult/tot_mult
-  extrapolated_runtime = extrapolated_runtime/coverage
+  extrapolated_runtime = extrapolated_runtime/(1+coverage)
 
   if config['validate']:
     full_prog_runtime = read_simstats(region_stats['wp'], region_config['wp'], 'runtime')
